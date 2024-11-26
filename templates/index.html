@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proteome Mapping Initiative</title>
+    <link rel="stylesheet" href="/static/main-styles.css">
+</head>
+<body>
+    <!-- Top Ribbon -->
+    <header class="top-ribbon">
+        <div class="main-header">Proteome Mapping Initiative</div>
+        <div class="secondary-header">An RVCE Biotech Initiative</div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Cards Section -->
+        <div class="cards-container">
+            <div class="card">
+                <img src="/static/images/cards/search.png" alt="Search Proteomes">
+                <h3>Search Proteomes</h3>
+                <button onclick="window.location.href='/search'">Search Now</button>
+            </div>
+            <div class="card clickable" id="statistics-card">
+                <img src="/static/images/cards/statistics.png" alt="Statistics">
+                <h3>Statistics</h3>
+            </div>
+            <div class="card clickable" id="about-card">
+                <img src="/static/images/cards/about_us.png" alt="About Us">
+                <h3>About Us</h3>
+            </div>
+        </div>
+
+        <!-- Statistics Section -->
+        <section id="statistics-section">
+            <div class="statistics-details">
+                <div class="statistics-card">
+                    <img src="/static/images/statistics/organism.png" alt="Organism">
+                    <h4>Organism</h4>
+                    <p>Aedes aegypti</p>
+                </div>
+                <div class="statistics-card">
+                    <img src="/static/images/statistics/taxon_id.png" alt="Taxon ID">
+                    <h4>Taxon ID</h4>
+                    <p>7159</p>
+                </div>
+                <div class="statistics-card">
+                    <img src="/static/images/statistics/proteome_id.png" alt="Proteome ID">
+                    <h4>Proteome ID</h4>
+                    <p>UP000008820</p>
+                </div>
+                <div class="statistics-card">
+                    <img src="/static/images/statistics/strain.png" alt="Strain">
+                    <h4>Strain</h4>
+                    <p>LVP_AGWG</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about-section">
+            <div class="about-details">
+                <div class="about-card">
+                    <img src="/static/images/about/guidance.png" alt="Guidance">
+                    <h4>Guidance</h4>
+                    <p>Details of professors guiding the project.</p>
+                </div>
+                <div class="about-card">
+                    <img src="/static/images/about/team.png" alt="Team">
+                    <h4>Team</h4>
+                    <p>Students who developed this platform.</p>
+                </div>
+                <div class="about-card">
+                    <img src="/static/images/about/contact_us.png" alt="Contact Us">
+                    <h4>Contact Us</h4>
+                    <p>Email: example@example.com</p>
+                    <p>Phone: +91 1234567890</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        document.getElementById('statistics-card').addEventListener('click', () => {
+            document.getElementById('statistics-section').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.getElementById('about-card').addEventListener('click', () => {
+            document.getElementById('about-section').scrollIntoView({ behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>

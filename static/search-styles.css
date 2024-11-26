@@ -1,0 +1,149 @@
+/* Top Ribbon */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+}
+header.top-ribbon {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.main-header {
+    font-size: 24px;
+    font-weight: bold;
+}
+header .main-header {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header .secondary-header {
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.secondary-header {
+    font-size: 18px;
+}
+
+/* Main Content */
+.main-content {
+    margin: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Filters Row */
+.filter-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.filter-box label {
+    margin-right: 10px;
+    font-size: 14px;
+}
+
+.threshold-box {
+    display: flex;
+    align-items: center;
+}
+
+.threshold-box label {
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.threshold-box input {
+    width: 60px;
+}
+
+/* Search Row */
+.search-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-row input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.search-row button {
+    padding: 8px 15px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    background-color: #1e3a5f;
+    color: white;
+    border-radius: 4px;
+}
+
+.search-row button:hover {
+    background-color: #174072;
+}
+
+/* Autosuggest Results */
+#results {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    padding: 10px;
+    max-width: 400px;
+    font-size: 12px; /* Reduced font size */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 5px;
+    cursor: pointer;
+}
+
+li:hover {
+    background: #ddd;
+}
+
+/* Search Results Section */
+#search-results {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#search-results .result-card {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    width: 100%;
+    background: #fff;
+}
+
+#search-results .result-card h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+#search-results .result-card table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px; /* Reduced font size for tables */
+}
+
+#search-results .result-card th, #search-results .result-card td {
+    border: 1px solid #ccc;
+    padding: 5px;
+    text-align: left;
+}
