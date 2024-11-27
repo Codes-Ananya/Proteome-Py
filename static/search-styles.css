@@ -96,8 +96,13 @@ header .secondary-header {
     border: 1px solid #ccc;
     background: #f9f9f9;
     padding: 10px;
-    max-width: 400px;
+    max-width: 100%;
     font-size: 12px; /* Reduced font size */
+}
+#results:empty {
+    border: none; /* Remove border when empty */
+    padding: 0; /* Remove padding when empty */
+    margin: 0; /* Adjust margin if needed */
 }
 
 ul {
@@ -116,11 +121,18 @@ li:hover {
 
 /* Search Results Section */
 #search-results {
+    width:100%;
+    max-width: 100%; 
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     gap: 20px;
+}
+#search-results:empty {
+    border: none; /* Remove border when empty */
+    padding: 0; /* Remove padding when empty */
+    margin: 0; /* Adjust margin if needed */
 }
 
 #search-results .result-card {
@@ -129,6 +141,7 @@ li:hover {
     padding: 15px;
     width: 100%;
     background: #fff;
+    overflow-x: auto;
 }
 
 #search-results .result-card h3 {
@@ -138,6 +151,7 @@ li:hover {
 
 #search-results .result-card table {
     width: 100%;
+    table-layout: auto;
     border-collapse: collapse;
     font-size: 12px; /* Reduced font size for tables */
 }
