@@ -34,17 +34,29 @@ def search_results():
     data = request.json
     query = data["query"]
     threshold = float(data["threshold"])
+    limit_bound = data.get("limit_bound", False)
 
     conn = get_connection()
     cursor = conn.cursor(dictionary=True)
 
     # Fetch data from protein_data table
-    cursor.execute("""
-        SELECT Pos, RES, IUPRED2
-        FROM protein_data
-        WHERE Protein = %s AND IUPRED2 > %s
-        LIMIT 10
-    """, (query, threshold))
+    if limit_bound:
+        cursor.execute("""
+            SELECT p.Pos, p.RES, p.IUPRED2
+            FROM protein_data p
+            JOIN proteome_parser pp
+            ON p.Protein = pp.protein_name
+            WHERE p.Protein = %s AND p.IUPRED2 >= %s
+              AND p.Pos BETWEEN pp.lower_bound AND pp.upper_bound
+            order by p.Pos
+        """, (query, threshold))
+    else:
+        cursor.execute("""
+            SELECT Pos, RES, IUPRED2
+            FROM protein_data
+            WHERE Protein = %s AND IUPRED2 >= %s
+        """, (query, threshold))
+        
     protein_data = cursor.fetchall()
 
     # Fetch data for Transmembrane

@@ -39,8 +39,8 @@ header .secondary-header {
 /* Filters Row */
 .filter-row {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: left;
+    justify-content: flex-start;
     margin-bottom: 15px;
 }
 
@@ -143,7 +143,8 @@ li:hover {
 }
 
 #search-results .result-card th, #search-results .result-card td {
-    border: 1px solid #ccc;
     padding: 5px;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
     text-align: left;
 }

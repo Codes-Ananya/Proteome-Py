@@ -47,6 +47,7 @@ document.getElementById("search-button").addEventListener("click", function () {
     const query = document.getElementById("search-bar").value.trim();
     const threshold = document.getElementById("threshold").value.trim();
     const organism = document.querySelector('input[name="type"]:checked').value;
+    const limitBound = document.getElementById("limit-bound").checked;
 
     if (!query) {
         alert("Please enter a valid search query.");
@@ -62,6 +63,7 @@ document.getElementById("search-button").addEventListener("click", function () {
             query: query,
             threshold: threshold,
             organism: organism,
+            limit_bound: limitBound,
         }),
     })
         .then((response) => response.json())
@@ -72,7 +74,7 @@ document.getElementById("search-button").addEventListener("click", function () {
             // Create a flex container for tables and visualization
             const flexContainer = document.createElement("div");
             flexContainer.style.display = "flex";
-            flexContainer.style.gap = "20px";
+            flexContainer.style.gap = "10px";
 
             // Protein data container
             const proteinDataContainer = document.createElement("div");
