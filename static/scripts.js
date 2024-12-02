@@ -193,6 +193,12 @@ document.getElementById("search-button").addEventListener("click", function () {
 
             flexContainer.appendChild(additionalDataContainer);
 
+            const pdbAlphaContainer = document.createElement("div");
+            pdbAlphaContainer.style.display = "flex";
+            pdbAlphaContainer.style.flexDirection = "column"; // Stack tables vertically
+            pdbAlphaContainer.style.gap = "10px"; // Optional: Add spacing between tables
+
+
             // Fetch and display UniProt PDB and AlphaFold entries
             fetch(`/fetch_uniprot_entries?protein_id=${query}`)
                 .then((response) => response.json())
@@ -206,9 +212,6 @@ document.getElementById("search-button").addEventListener("click", function () {
                             <thead>
                                 <tr>
                                     <th style="border: 1px solid #ccc; padding: 5px;">Identifier</th>
-                                    <th style="border: 1px solid #ccc; padding: 5px;">Method</th>
-                                    <th style="border: 1px solid #ccc; padding: 5px;">Resolution</th>
-                                    <th style="border: 1px solid #ccc; padding: 5px;">Chains</th>
                                     <th style="border: 1px solid #ccc; padding: 5px;">L_Bound</th>
                                     <th style="border: 1px solid #ccc; padding: 5px;">U_Bound</th>
                                 </tr>
@@ -222,9 +225,6 @@ document.getElementById("search-button").addEventListener("click", function () {
                             const tr = document.createElement("tr");
                             tr.innerHTML = `
                                 <td style="border: 1px solid #ccc; padding: 5px;">${entry.Identifier}</td>
-                                <td style="border: 1px solid #ccc; padding: 5px;">${entry.Method || "N/A"}</td>
-                                <td style="border: 1px solid #ccc; padding: 5px;">${entry.Resolution || "N/A"}</td>
-                                <td style="border: 1px solid #ccc; padding: 5px;">${entry.Chains || "N/A"}</td>
                                 <td style="border: 1px solid #ccc; padding: 5px;">${entry.L_Bound || "N/A"}</td>
                                 <td style="border: 1px solid #ccc; padding: 5px;">${entry.U_Bound || "N/A"}</td>
                             `;
@@ -234,7 +234,8 @@ document.getElementById("search-button").addEventListener("click", function () {
                         const pdbContainer = document.createElement("div");
                         pdbContainer.innerHTML = "<h3>PDB Entries</h3>";
                         pdbContainer.appendChild(pdbTable);
-                        flexContainer.appendChild(pdbContainer);
+                        pdbAlphaContainer.appendChild(pdbContainer);
+                        //flexContainer.appendChild(pdbContainer);
                     }
 
                     // AlphaFold Entries Table
@@ -246,7 +247,6 @@ document.getElementById("search-button").addEventListener("click", function () {
                             <thead>
                                 <tr>
                                     <th style="border: 1px solid #ccc; padding: 5px;">Identifier</th>
-                                    <th style="border: 1px solid #ccc; padding: 5px;">Position</th>
                                     <th style="border: 1px solid #ccc; padding: 5px;">L_Bound</th>
                                     <th style="border: 1px solid #ccc; padding: 5px;">U_Bound</th>
                                 </tr>
@@ -260,7 +260,6 @@ document.getElementById("search-button").addEventListener("click", function () {
                             const tr = document.createElement("tr");
                             tr.innerHTML = `
                                 <td style="border: 1px solid #ccc; padding: 5px;">${entry.Identifier}</td>
-                                <td style="border: 1px solid #ccc; padding: 5px;">${entry.Position || "N/A"}</td>
                                 <td style="border: 1px solid #ccc; padding: 5px;">${entry.L_Bound || "N/A"}</td>
                                 <td style="border: 1px solid #ccc; padding: 5px;">${entry.U_Bound || "N/A"}</td>
                             `;
@@ -270,7 +269,8 @@ document.getElementById("search-button").addEventListener("click", function () {
                         const alphaContainer = document.createElement("div");
                         alphaContainer.innerHTML = "<h3>AlphaFold Entries</h3>";
                         alphaContainer.appendChild(alphaTable);
-                        flexContainer.appendChild(alphaContainer);
+                        pdbAlphaContainer.appendChild(alphaContainer);
+                        flexContainer.appendChild(pdbAlphaContainer);
                     }
                 })
                 .catch((error) => {
