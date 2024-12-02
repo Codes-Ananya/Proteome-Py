@@ -42,6 +42,14 @@ document.getElementById("search-bar").addEventListener("input", function () {
         .catch((error) => console.error("Error fetching suggestions:", error));
 });
 
+// Function to add banded rows to tables
+function addBandedRows(table) {
+    const rows = table.querySelectorAll("tbody tr");
+    rows.forEach((row, index) => {
+        row.style.backgroundColor = index % 2 === 0 ? "#81b3c1" : "#ffffff"; // Alternating colors
+    });
+}
+
 // Fetch and display search results
 document.getElementById("search-button").addEventListener("click", function () {
     const query = document.getElementById("search-bar").value.trim();
@@ -111,6 +119,7 @@ document.getElementById("search-button").addEventListener("click", function () {
                     `;
                     tbody.appendChild(tr);
                 });
+                addBandedRows(proteinTable); // Add banded rows
                 proteinDataContainer.appendChild(proteinTable);
             } else {
                 proteinDataContainer.innerHTML = "<p>No results found for the selected query and threshold.</p>";
