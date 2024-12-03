@@ -143,8 +143,8 @@ document.getElementById("search-button").addEventListener("click", function () {
                 transTable.innerHTML = `
                     <thead>
                         <tr>
-                            <th style="border: 1px solid #ccc; padding: 5px;">Lower Bound</th>
-                            <th style="border: 1px solid #ccc; padding: 5px;">Upper Bound</th>
+                            <th style="border: 1px solid #ccc; padding: 5px;">L Bound</th>
+                            <th style="border: 1px solid #ccc; padding: 5px;">U Bound</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -160,9 +160,10 @@ document.getElementById("search-button").addEventListener("click", function () {
                     `;
                     transTbody.appendChild(tr);
                 });
+                addBandedRows(transTable);
                 additionalDataContainer.appendChild(transTable);
             } else {
-                additionalDataContainer.innerHTML += "<p>No results found for Transmembrane.</p>";
+                additionalDataContainer.innerHTML += "<p>No Transmembrane Results.</p>";
             }
 
             // Display binding_site_data table
@@ -178,8 +179,8 @@ document.getElementById("search-button").addEventListener("click", function () {
                 bindTable.innerHTML = `
                     <thead>
                         <tr>
-                            <th style="border: 1px solid #ccc; padding: 5px;">Lower Bound</th>
-                            <th style="border: 1px solid #ccc; padding: 5px;">Upper Bound</th>
+                            <th style="border: 1px solid #ccc; padding: 5px;">L Bound</th>
+                            <th style="border: 1px solid #ccc; padding: 5px;">U Bound</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -195,9 +196,10 @@ document.getElementById("search-button").addEventListener("click", function () {
                     `;
                     bindTbody.appendChild(tr);
                 });
+                addBandedRows(bindTable);
                 additionalDataContainer.appendChild(bindTable);
             } else {
-                additionalDataContainer.innerHTML += "<p>No results found for Binding Site.</p>";
+                additionalDataContainer.innerHTML += "<p>No Binding Site Results</p>";
             }
 
             flexContainer.appendChild(additionalDataContainer);
@@ -239,7 +241,7 @@ document.getElementById("search-button").addEventListener("click", function () {
                             `;
                             pdbTbody.appendChild(tr);
                         });
-
+                        addBandedRows(pdbTable);
                         const pdbContainer = document.createElement("div");
                         pdbContainer.innerHTML = "<h3>PDB Entries</h3>";
                         pdbContainer.appendChild(pdbTable);
@@ -274,7 +276,7 @@ document.getElementById("search-button").addEventListener("click", function () {
                             `;
                             alphaTbody.appendChild(tr);
                         });
-
+                        addBandedRows(alphaTable);
                         const alphaContainer = document.createElement("div");
                         alphaContainer.innerHTML = "<h3>AlphaFold Entries</h3>";
                         alphaContainer.appendChild(alphaTable);
