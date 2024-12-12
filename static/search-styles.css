@@ -90,6 +90,15 @@ header .secondary-header {
     background-color: #174072;
 }
 
+/* Make the container scrollable */
+.protein-container {
+    max-height: 310px; /* Set the maximum height */
+    overflow-y: auto;  /* Enable vertical scrolling */
+    overflow-x: hidden;
+    min-width:150px;
+    box-sizing:content-box; /* Include padding/borders in width calculations */
+}
+
 /* Autosuggest Results */
 #results {
     margin-top: 10px;

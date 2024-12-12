@@ -86,11 +86,16 @@ document.getElementById("search-button").addEventListener("click", function () {
 
             // Protein data container
             const proteinDataContainer = document.createElement("div");
+            proteinDataContainer.className = "protein-container";  // for scrolling
 
             // Display protein_data table
             const proteinData = data.protein_data;
             if (proteinData.length > 0) {
                 const summary = document.createElement("p");
+                const proteinHeader = document.createElement("h3");
+                proteinHeader.textContent = "Protein Data";
+                proteinDataContainer.appendChild(proteinHeader);
+
                 //summary.innerHTML = `Protein: <strong>${query}</strong> - Fetched ${proteinData.length} records meeting the criteria.`;
                 proteinDataContainer.appendChild(summary);
 
@@ -100,9 +105,9 @@ document.getElementById("search-button").addEventListener("click", function () {
                 proteinTable.innerHTML = `
                     <thead>
                         <tr>
-                            <th style="border: 1px solid #ccc; padding: 5px;">POS</th>
-                            <th style="border: 1px solid #ccc; padding: 5px;">RES</th>
-                            <th style="border: 1px solid #ccc; padding: 5px;">IUPRED2</th>
+                            <th style="border: 1px solid #ccc; padding: 3px;">POS</th>
+                            <th style="border: 1px solid #ccc; padding: 3px;">RES</th>
+                            <th style="border: 1px solid #ccc; padding: 3px;">IUPRED2</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -122,7 +127,7 @@ document.getElementById("search-button").addEventListener("click", function () {
                 addBandedRows(proteinTable); // Add banded rows
                 proteinDataContainer.appendChild(proteinTable);
             } else {
-                proteinDataContainer.innerHTML = "<p>No results found for the selected query and threshold.</p>";
+                proteinDataContainer.innerHTML = "<p>No results found</p>";
             }
 
             flexContainer.appendChild(proteinDataContainer);
@@ -222,9 +227,10 @@ document.getElementById("search-button").addEventListener("click", function () {
                         pdbTable.innerHTML = `
                             <thead>
                                 <tr>
-                                    <th style="border: 1px solid #ccc; padding: 5px;">Identifier</th>
-                                    <th style="border: 1px solid #ccc; padding: 5px;">L_Bound</th>
-                                    <th style="border: 1px solid #ccc; padding: 5px;">U_Bound</th>
+                                    <th style="border: 1px solid #ccc; padding: 5px;">Id</th>
+                                    <th style="border: 1px solid #ccc; padding: 5px;">L_B</th>
+                                    <th style="border: 1px solid #ccc; padding: 5px;">U_B</th>
+                                    <th style="border: 1px solid #ccc; padding: 5px;">rcsb</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -238,6 +244,12 @@ document.getElementById("search-button").addEventListener("click", function () {
                                 <td style="border: 1px solid #ccc; padding: 5px;">${entry.Identifier}</td>
                                 <td style="border: 1px solid #ccc; padding: 5px;">${entry.L_Bound || "N/A"}</td>
                                 <td style="border: 1px solid #ccc; padding: 5px;">${entry.U_Bound || "N/A"}</td>
+                                <td style="border: 1px solid #ccc; padding: 5px;">
+                                    <a href="https://www.rcsb.org/3d-view/${entry.Identifier}" target="_blank">
+                                    <img src="/static/images/rcsb.png" alt="RCSB Icon" style="width: 20px; height: 20px;"/>
+                                    </a>
+                                </td>
+
                             `;
                             pdbTbody.appendChild(tr);
                         });
@@ -257,9 +269,10 @@ document.getElementById("search-button").addEventListener("click", function () {
                         alphaTable.innerHTML = `
                             <thead>
                                 <tr>
-                                    <th style="border: 1px solid #ccc; padding: 5px;">Identifier</th>
-                                    <th style="border: 1px solid #ccc; padding: 5px;">L_Bound</th>
-                                    <th style="border: 1px solid #ccc; padding: 5px;">U_Bound</th>
+                                    <th style="border: 1px solid #ccc; padding: 5px;">Id</th>
+                                    <th style="border: 1px solid #ccc; padding: 5px;">L_B</th>
+                                    <th style="border: 1px solid #ccc; padding: 5px;">U_B</th>
+                                    <th style="border: 1px solid #ccc; padding: 5px;">rcsb</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -273,6 +286,11 @@ document.getElementById("search-button").addEventListener("click", function () {
                                 <td style="border: 1px solid #ccc; padding: 5px;">${entry.Identifier}</td>
                                 <td style="border: 1px solid #ccc; padding: 5px;">${entry.L_Bound || "N/A"}</td>
                                 <td style="border: 1px solid #ccc; padding: 5px;">${entry.U_Bound || "N/A"}</td>
+                                <td style="border: 1px solid #ccc; padding: 5px;">
+                                    <a href="https://www.rcsb.org/3d-view/AF_AF${entry.Identifier}F1" target="_blank">
+                                    <img src="/static/images/rcsb.png" alt="RCSB Icon" style="width: 20px; height: 20px;"/>
+                                    </a>
+                                </td>
                             `;
                             alphaTbody.appendChild(tr);
                         });
