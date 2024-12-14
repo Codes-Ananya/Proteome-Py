@@ -226,7 +226,7 @@ document.getElementById("search-button").addEventListener("click", function () {
 
             // Embed the 3Dmol viewer URL using an iframe
             const viewerIframe = document.createElement("iframe");
-            //viewerIframe.src = "https://3Dmol.org/viewer.html?pdb=1YCR&select=chain:A&style=cartoon;stick:radius~0.1&surface=opacity:0.8;colorscheme:whiteCarbon&select=chain:B&style=cartoon;line&select=resi:19,23,26;chain:B&style=stick&labelres=backgroundOpacity:0.8;fontSize:14";
+            viewerIframe.src = "https://3Dmol.org/viewer.html?pdb=1YCR&select=chain:A&style=cartoon;stick:radius~0.1&surface=opacity:0.8;colorscheme:whiteCarbon&select=chain:B&style=cartoon;line&select=resi:19,23,26;chain:B&style=stick&labelres=backgroundOpacity:0.8;fontSize:14";
             viewerIframe.style.width = "100%";
             viewerIframe.style.height = "100%";
             viewerIframe.style.border = "none";
@@ -258,7 +258,7 @@ document.getElementById("search-button").addEventListener("click", function () {
                         uniprotData.pdb_entries.forEach((entry) => {
                             const tr = document.createElement("tr");
                             tr.innerHTML = `
-                                <td style="border: 1px solid #ccc; padding: 5px;"><a href="#" class="pdb-link" data-id="${entry.Identifier}">${entry.Identifier}</a></td>
+                                <td style="border: 1px solid #ccc; padding: 5px;">${entry.Identifier}</td>
                                 <td style="border: 1px solid #ccc; padding: 5px;">${entry.L_Bound || "N/A"}</td>
                                 <td style="border: 1px solid #ccc; padding: 5px;">${entry.U_Bound || "N/A"}</td>
                                 <td style="border: 1px solid #ccc; padding: 3px; text-align: center; vertical-align: middle;">
@@ -276,23 +276,6 @@ document.getElementById("search-button").addEventListener("click", function () {
                         pdbContainer.appendChild(pdbTable);
                         pdbAlphaContainer.appendChild(pdbContainer);
                         //flexContainer.appendChild(pdbContainer);
-                        // start change for iframe
-                        // Attach event listener for dynamic iframe update
-                        pdbTable.addEventListener("click", function (event) {
-                            const target = event.target;
-                            if (target.classList.contains("pdb-link")) {
-                                event.preventDefault();
-                                const proteinId = target.dataset.id;
-                                // Update the iframe dynamically
-                                const viewerIframe = document.querySelector("#viewer-container iframe");
-                                if (viewerIframe) {
-                                    viewerIframe.src = `https://3Dmol.org/viewer.html?pdb=${proteinId}&select=chain:A&style=cartoon:color~spectrum;stick:radius~0.1&select=chain:B&style=cartoon:color~spectrum;stick:radius~0.1`;
-                                } else {
-                                    console.error("Viewer iframe not found.");
-                                }
-                            }
-                        });
-                        // end change for iframe
                     }
 
                     // AlphaFold Entries Table
@@ -317,12 +300,12 @@ document.getElementById("search-button").addEventListener("click", function () {
                         uniprotData.alphafold_entries.forEach((entry) => {
                             const tr = document.createElement("tr");
                             tr.innerHTML = `
-                                <td style="border: 1px solid #ccc; padding: 5px;"><a href="#" class="alphafold-link" data-id="${entry.Identifier}">${entry.Identifier}</a></td>
+                                <td style="border: 1px solid #ccc; padding: 5px;">${entry.Identifier}</td>
                                 <td style="border: 1px solid #ccc; padding: 5px;">${entry.L_Bound || "N/A"}</td>
                                 <td style="border: 1px solid #ccc; padding: 5px;">${entry.U_Bound || "N/A"}</td>
                                 <td style="border: 1px solid #ccc; padding: 3px; text-align: center; vertical-align: middle;">
                                     <a href="https://www.rcsb.org/3d-view/AF_AF${entry.Identifier}F1" target="_blank">
-                                    <img src="/static/images/rcsb.png" alt="RCSB Icon" style="width: 15px; height: 15px;"/>
+                                    <img src="/static/images/rcsb.png" alt="RCSB Icon" style="width: 20px; height: 20px;"/>
                                     </a>
                                 </td>
                             `;
@@ -333,29 +316,11 @@ document.getElementById("search-button").addEventListener("click", function () {
                         alphaContainer.innerHTML = "<h3>AlphaFold Entries</h3>";
                         alphaContainer.appendChild(alphaTable);
                         pdbAlphaContainer.appendChild(alphaContainer);
-                        // start change for iframe
-                        // Attach event listener for dynamic iframe update
-                        alphaTable.addEventListener("click", function (event) {
-                            const target = event.target;
-                            if (target.classList.contains("alphafold-link")) {
-                                event.preventDefault();
-                                const proteinId = target.dataset.id;
-                                // Update the iframe dynamically
-                                const viewerIframe = document.querySelector("#viewer-container iframe");
-                                if (viewerIframe) {
-                                    viewerIframe.src = `https://3dmol.org/viewer.html?url=https://alphafold.ebi.ac.uk/files/AF-${proteinId}-F1-model_v4.pdb&style=cartoon:color~spectrum`;
-                                } else {
-                                    console.error("Viewer iframe not found.");
-                                }
-                            }
-                        });
-                        // end change for iframe
-
                         flexContainer.appendChild(pdbAlphaContainer);
 
                         // Embed the 3Dmol viewer URL using an iframe
                         const viewerIframe = document.createElement("iframe");
-                        //viewerIframe.src = "https://3Dmol.org/viewer.html?pdb=1YCR&select=chain:A&style=cartoon;stick:radius~0.1&surface=opacity:0.8;colorscheme:whiteCarbon&select=chain:B&style=cartoon;line&select=resi:19,23,26;chain:B&style=stick&labelres=backgroundOpacity:0.8;fontSize:14";
+                        viewerIframe.src = "https://3Dmol.org/viewer.html?pdb=1YCR&select=chain:A&style=cartoon;stick:radius~0.1&surface=opacity:0.8;colorscheme:whiteCarbon&select=chain:B&style=cartoon;line&select=resi:19,23,26;chain:B&style=stick&labelres=backgroundOpacity:0.8;fontSize:14";
                         viewerIframe.style.width = "100%";
                         viewerIframe.style.height = "100%";
                         viewerIframe.style.border = "none";

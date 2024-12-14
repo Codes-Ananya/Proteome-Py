@@ -114,6 +114,12 @@ header .secondary-header {
     margin: 0; /* Adjust margin if needed */
 }
 
+#viewer-container {
+    background-color: #f9f9f9;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+}
 ul {
     list-style: none;
     padding: 0;
